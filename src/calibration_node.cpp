@@ -28,8 +28,8 @@ using namespace std_msgs;
 //----------IMPORTANT!!!!---------------------
 
 
-std::string savePath = "./src/calibration_cam_laser";//PATH TO SAVE EVERYTHING
-
+std::string savePath = "./src/calibration_cam_laser/data";//PATH TO SAVE EVERYTHING
+std::string srcPath = "./src/calibration_cam_laser";//PATH TO SAVE EVERYTHING
 std::string namePic ="/RGB";//name of pictures
 std::string nameLas ="/laser";//name of laser data
 std::string las =savePath+ nameLas + ".txt";//ścieżka pliku tekstowego
@@ -82,13 +82,14 @@ void calibration(const ImageConstPtr& image, const LaserScan::ConstPtr& laser)
     if(probka<samplenum)
     {
     probka++;
+    cv::waitKey(0);
     }
     else
     {
         //TUTAJ FUNKACJA KALIBRACJI
         //chess();
     cv::waitKey(0);
-     calculateTransformation(savePath);
+     calculateTransformation(srcPath);
     ros::shutdown();
 
 
